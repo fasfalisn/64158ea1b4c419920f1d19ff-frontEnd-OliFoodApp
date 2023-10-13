@@ -2,15 +2,15 @@
 
 :root {
     /* Color CSS variables */
-    --color-primary: #273043;
-    --color-secondary: #9197ae;
+    --color-primary: #000000;
+    --color-secondary: #e0e0e0;
     --color-grey: #828282;
     --color-grey-light: #e0e0e0;
     --color-grey-dark: #333333;
     --color-white: #ffffff;
     --color-black: #000000;
     /* Background color */
-    --color-background: #eeeeee;
+    --color-background: #ffffff;
 }
 
 
