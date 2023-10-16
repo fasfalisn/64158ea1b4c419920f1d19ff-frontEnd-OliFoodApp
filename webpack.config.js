@@ -10,6 +10,8 @@ module.exports = {
 	'Products' : './javascript/Products.js',
 	'OrderSummary' : './javascript/OrderSummary.js',
 	'Settings' : './javascript/Settings.js',
+	'MyProfile' : './javascript/MyProfile.js',
+	'Profile' : './javascript/Profile.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
