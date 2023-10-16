@@ -12,6 +12,7 @@ module.exports = {
 	'Settings' : './javascript/Settings.js',
 	'MyProfile' : './javascript/MyProfile.js',
 	'Profile' : './javascript/Profile.js',
+	'OrderSum' : './javascript/OrderSum.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
