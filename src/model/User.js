@@ -23,10 +23,13 @@ class User {
      * Constructs a new <code>User</code>.
      * @alias module:model/User
      * @param useremail {String} 
+     * @param password {String} 
+     * @param username {String} 
+     * @param usercategory {String} 
      */
-    constructor(useremail) { 
+    constructor(useremail, password, username, usercategory) { 
         
-        User.initialize(this, useremail);
+        User.initialize(this, useremail, password, username, usercategory);
     }
 
     /**
@@ -34,8 +37,11 @@ class User {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, useremail) { 
+    static initialize(obj, useremail, password, username, usercategory) { 
         obj['useremail'] = useremail;
+        obj['password'] = password;
+        obj['username'] = username;
+        obj['usercategory'] = usercategory;
     }
 
     /**
@@ -55,6 +61,15 @@ class User {
             if (data.hasOwnProperty('useremail')) {
                 obj['useremail'] = ApiClient.convertToType(data['useremail'], 'String');
             }
+            if (data.hasOwnProperty('password')) {
+                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            }
+            if (data.hasOwnProperty('username')) {
+                obj['username'] = ApiClient.convertToType(data['username'], 'String');
+            }
+            if (data.hasOwnProperty('usercategory')) {
+                obj['usercategory'] = ApiClient.convertToType(data['usercategory'], 'String');
+            }
         }
         return obj;
     }
@@ -71,6 +86,21 @@ User.prototype['_id'] = undefined;
  * @member {String} useremail
  */
 User.prototype['useremail'] = undefined;
+
+/**
+ * @member {String} password
+ */
+User.prototype['password'] = undefined;
+
+/**
+ * @member {String} username
+ */
+User.prototype['username'] = undefined;
+
+/**
+ * @member {String} usercategory
+ */
+User.prototype['usercategory'] = undefined;
 
 
 

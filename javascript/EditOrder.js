@@ -6,12 +6,18 @@ document.getElementById('i02ok').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/Orders' ;}};document.getElementById('i5t9j').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/MyProducts' ;}};document.getElementById('i0l69').onclick = (event) => {
+    {   location.href= '/Products' ;}};document.getElementById('i0l69').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/Suppliers' ;}};document.getElementById('i9kwo').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/Settings' ;}};document.getElementById('ircth').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/Login' ;}};document.getElementById('i9gy8').onclick = (event) => {
+    {   location.href= '/Login' ;}};document.getElementById('i549k').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/Settings' ;}};window.onload = () => {};
+    { window.document.location = '';}};document.getElementById('itrm2').onclick = (event) => {
+    event.preventDefault();
+    { window.document.location = '';}};document.getElementById('i64aj').onclick = (event) => {
+    event.preventDefault();
+    {   location.href= '/Orders' ;}};document.getElementById('i9a0c').onclick = (event) => {
+    event.preventDefault();
+    {   location.href= '/Orders' ;}};window.onload = () => {};

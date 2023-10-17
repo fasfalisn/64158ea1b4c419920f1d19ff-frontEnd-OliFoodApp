@@ -15,6 +15,7 @@ module.exports = {
 	'MyProducts' : './javascript/MyProducts.js',
 	'NewProduct' : './javascript/NewProduct.js',
 	'EditProduct' : './javascript/EditProduct.js',
+	'EditOrder' : './javascript/EditOrder.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
