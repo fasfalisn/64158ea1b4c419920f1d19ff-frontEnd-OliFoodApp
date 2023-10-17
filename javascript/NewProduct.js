@@ -1,4 +1,4 @@
-document.getElementById('i02ok').onclick = (event) => {
+let apiProductApi = new TempApi.ProductApi();import TempApi from '../src/index';let product = new TempApi.Product();document.getElementById('i02ok').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/MyProfile' ;}};document.getElementById('i172z').onclick = (event) => {
     event.preventDefault();
@@ -10,7 +10,9 @@ document.getElementById('i02ok').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/Settings' ;}};document.getElementById('ircth').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/Login' ;}};
+    {   location.href= '/Login' ;}};document.getElementById('ii4rs').onclick = (event) => {
+    event.preventDefault();
+    {   location.href= '/' ;}};
  function calculateSize(img, maxWidth, maxHeight) {
       let width = img.width;
       let height = img.height;
@@ -81,4 +83,8 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
       };});
 document.getElementById('iy0oer').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/MyProducts' ;}};window.onload = () => {};
+    product['productname'] = document.querySelector("[annotationname = 'productname']").value;product['productcategory'] = document.querySelector("[annotationname = 'productcategory']").value;product['productimage'] = {
+        data: document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'productimage']").src,
+        name: document.querySelector("[annotationname = 'productimage']").getAttribute("name")
+      };
+      product['productunit'] = document.querySelector("[annotationname = 'productunit']").value;product['productdesc'] = document.querySelector("[annotationname = 'productdesc']").value;apiProductApi.createproduct( product, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {   location.href= '/MyProducts' ;}}});};window.onload = () => {};

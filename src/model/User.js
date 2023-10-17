@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import Product from './Product';
+import UserUserimage from './UserUserimage';
 
 /**
  * The User model module.
@@ -26,10 +28,16 @@ class User {
      * @param password {String} 
      * @param username {String} 
      * @param usercategory {String} 
+     * @param userimage {module:model/UserUserimage} 
+     * @param userproducts {Array.<module:model/Product>} 
+     * @param userstatus {String} 
+     * @param usertown {String} 
+     * @param useraddress {String} 
+     * @param usertax {String} 
      */
-    constructor(useremail, password, username, usercategory) { 
+    constructor(useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax) { 
         
-        User.initialize(this, useremail, password, username, usercategory);
+        User.initialize(this, useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax);
     }
 
     /**
@@ -37,11 +45,17 @@ class User {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, useremail, password, username, usercategory) { 
+    static initialize(obj, useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax) { 
         obj['useremail'] = useremail;
         obj['password'] = password;
         obj['username'] = username;
         obj['usercategory'] = usercategory;
+        obj['userimage'] = userimage;
+        obj['userproducts'] = userproducts;
+        obj['userstatus'] = userstatus;
+        obj['usertown'] = usertown;
+        obj['useraddress'] = useraddress;
+        obj['usertax'] = usertax;
     }
 
     /**
@@ -69,6 +83,24 @@ class User {
             }
             if (data.hasOwnProperty('usercategory')) {
                 obj['usercategory'] = ApiClient.convertToType(data['usercategory'], 'String');
+            }
+            if (data.hasOwnProperty('userimage')) {
+                obj['userimage'] = UserUserimage.constructFromObject(data['userimage']);
+            }
+            if (data.hasOwnProperty('userproducts')) {
+                obj['userproducts'] = ApiClient.convertToType(data['userproducts'], [Product]);
+            }
+            if (data.hasOwnProperty('userstatus')) {
+                obj['userstatus'] = ApiClient.convertToType(data['userstatus'], 'String');
+            }
+            if (data.hasOwnProperty('usertown')) {
+                obj['usertown'] = ApiClient.convertToType(data['usertown'], 'String');
+            }
+            if (data.hasOwnProperty('useraddress')) {
+                obj['useraddress'] = ApiClient.convertToType(data['useraddress'], 'String');
+            }
+            if (data.hasOwnProperty('usertax')) {
+                obj['usertax'] = ApiClient.convertToType(data['usertax'], 'String');
             }
         }
         return obj;
@@ -101,6 +133,36 @@ User.prototype['username'] = undefined;
  * @member {String} usercategory
  */
 User.prototype['usercategory'] = undefined;
+
+/**
+ * @member {module:model/UserUserimage} userimage
+ */
+User.prototype['userimage'] = undefined;
+
+/**
+ * @member {Array.<module:model/Product>} userproducts
+ */
+User.prototype['userproducts'] = undefined;
+
+/**
+ * @member {String} userstatus
+ */
+User.prototype['userstatus'] = undefined;
+
+/**
+ * @member {String} usertown
+ */
+User.prototype['usertown'] = undefined;
+
+/**
+ * @member {String} useraddress
+ */
+User.prototype['useraddress'] = undefined;
+
+/**
+ * @member {String} usertax
+ */
+User.prototype['usertax'] = undefined;
 
 
 

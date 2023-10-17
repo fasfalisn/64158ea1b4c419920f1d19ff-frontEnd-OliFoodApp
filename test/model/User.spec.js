@@ -84,6 +84,42 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property userimage (base name: "userimage")', function() {
+      // uncomment below and update the code to test the property userimage
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property userproducts (base name: "userproducts")', function() {
+      // uncomment below and update the code to test the property userproducts
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property userstatus (base name: "userstatus")', function() {
+      // uncomment below and update the code to test the property userstatus
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property usertown (base name: "usertown")', function() {
+      // uncomment below and update the code to test the property usertown
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property useraddress (base name: "useraddress")', function() {
+      // uncomment below and update the code to test the property useraddress
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property usertax (base name: "usertax")', function() {
+      // uncomment below and update the code to test the property usertax
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

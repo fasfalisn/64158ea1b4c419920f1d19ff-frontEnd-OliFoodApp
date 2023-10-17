@@ -13,7 +13,12 @@
 
 
 import ApiClient from './ApiClient';
+import Order from './model/Order';
+import Product from './model/Product';
 import User from './model/User';
+import UserUserimage from './model/UserUserimage';
+import OrderApi from './api/OrderApi';
+import ProductApi from './api/ProductApi';
 import UserApi from './api/UserApi';
 
 
@@ -56,10 +61,40 @@ export {
     ApiClient,
 
     /**
+     * The Order model constructor.
+     * @property {module:model/Order}
+     */
+    Order,
+
+    /**
+     * The Product model constructor.
+     * @property {module:model/Product}
+     */
+    Product,
+
+    /**
      * The User model constructor.
      * @property {module:model/User}
      */
     User,
+
+    /**
+     * The UserUserimage model constructor.
+     * @property {module:model/UserUserimage}
+     */
+    UserUserimage,
+
+    /**
+    * The OrderApi service constructor.
+    * @property {module:api/OrderApi}
+    */
+    OrderApi,
+
+    /**
+    * The ProductApi service constructor.
+    * @property {module:api/ProductApi}
+    */
+    ProductApi,
 
     /**
     * The UserApi service constructor.
@@ -76,10 +111,40 @@ export default {
     ApiClient,
 
     /**
+     * The Order model constructor.
+     * @property {module:model/Order}
+     */
+    Order,
+
+    /**
+     * The Product model constructor.
+     * @property {module:model/Product}
+     */
+    Product,
+
+    /**
      * The User model constructor.
      * @property {module:model/User}
      */
     User,
+
+    /**
+     * The UserUserimage model constructor.
+     * @property {module:model/UserUserimage}
+     */
+    UserUserimage,
+
+    /**
+    * The OrderApi service constructor.
+    * @property {module:api/OrderApi}
+    */
+    OrderApi,
+
+    /**
+    * The ProductApi service constructor.
+    * @property {module:api/ProductApi}
+    */
+    ProductApi,
 
     /**
     * The UserApi service constructor.

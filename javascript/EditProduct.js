@@ -1,4 +1,4 @@
-document.getElementById('i02ok').onclick = (event) => {
+let apiProductApi = new TempApi.ProductApi();import TempApi from '../src/index';document.getElementById('i02ok').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/MyProfile' ;}};document.getElementById('i172z').onclick = (event) => {
     event.preventDefault();
@@ -10,7 +10,9 @@ document.getElementById('i02ok').onclick = (event) => {
     event.preventDefault();
     {   location.href= '/Settings' ;}};document.getElementById('ircth').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/Login' ;}};
+    {   location.href= '/Login' ;}};document.getElementById('ii4rs').onclick = (event) => {
+    event.preventDefault();
+    {   location.href= '/' ;}};
  function calculateSize(img, maxWidth, maxHeight) {
       let width = img.width;
       let height = img.height;
@@ -81,4 +83,34 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
       };});
 document.getElementById('iy0oer').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/MyProducts' ;}};window.onload = () => {};
+    let productId = window.location.pathname.replace('/EditProduct/','');let product = new TempApi.Product();product['productname'] = document.querySelector("[annotationname = 'productname']").value;product['productcategory'] = document.querySelector("[annotationname = 'productcategory']").value;product['productimage'] = {
+        data: document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'productimage']").src,
+        name: document.querySelector("[annotationname = 'productimage']").getAttribute("name")
+      };product['productunit'] = document.querySelector("[annotationname = 'productunit']").value;product['productdesc'] = document.querySelector("[annotationname = 'productdesc']").value; let opts = {product};apiProductApi.updateproduct( productId, opts, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = productname]').value = response.body.query.productname ;document.querySelector('[annotationname = productcategory]').value = response.body.query.productcategory ;
+      if(response.body.query.productimage !== undefined){
+
+        if(document.querySelector('[annotationname = productimage]').getAttribute('type') === 'file'){
+          document.querySelector('[annotationname = productimage]').setAttribute('data-image-base64',response.body.query.productimage.data);
+        }
+        else{
+          document.querySelector('[annotationname = productimage]').src = response.body.query.productimage.data;
+        }
+        document.querySelector('[annotationname = productimage]').name = response.body.query.productimage.name;
+      }
+      document.querySelector('[annotationname = productunit]').value = response.body.query.productunit ;document.querySelector('[annotationname = productdesc]').value = response.body.query.productdesc ;{   location.href= '/MyProducts' ;}}});};window.onload = () => {let productId = window.location.pathname.replace('/EditProduct/','');apiProductApi.getproduct( productId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); try { document.querySelector('[annotationname = productname]').value = response.body.query.productname; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productdesc]').value = response.body.query.productdesc; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productcategory]').value = response.body.query.productcategory; } catch (e) { console.log(e) };try { 
+      if(response.body.query.productimage !== undefined){
+        if(document.querySelector('[annotationname = productimage]').getAttribute('type') === 'file'){
+          document.querySelector('[annotationname = productimage]').setAttribute('data-image-base64',response.body.query.productimage.data);
+          let fileName = response.body.query.productimage.name;
+          let file = new File([response.body.query.productimage.data], fileName,{lastModified:new Date().getTime()}, 'utf-8');
+          let container = new DataTransfer();
+          container.items.add(file);
+
+          document.querySelector("[annotationname = productimage]").files = container.files;
+        }
+        else {
+          document.querySelector('[annotationname = productimage]').src = response.body.query.productimage.data ;
+        }
+        document.querySelector('[annotationname = productimage]').name = response.body.query.productimage.name ;
+      }
+       } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productunit]').value = response.body.query.productunit; } catch (e) { console.log(e) };}});};
