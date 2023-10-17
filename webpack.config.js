@@ -12,7 +12,9 @@ module.exports = {
 	'Settings' : './javascript/Settings.js',
 	'MyProfile' : './javascript/MyProfile.js',
 	'Profile' : './javascript/Profile.js',
-	'OrderSum' : './javascript/OrderSum.js',
+	'MyProducts' : './javascript/MyProducts.js',
+	'NewProduct' : './javascript/NewProduct.js',
+	'EditProduct' : './javascript/EditProduct.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
