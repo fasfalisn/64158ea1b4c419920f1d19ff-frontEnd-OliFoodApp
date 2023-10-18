@@ -1,4 +1,5 @@
 let apiUserApi = new TempApi.UserApi();
+let apiOrderApi = new TempApi.OrderApi();
 import TempApi from '../src/index';
 
 document.getElementById('i02ok').onclick = (event) => {
