@@ -60,6 +60,7 @@ export default class OrderApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -101,6 +102,7 @@ export default class OrderApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -137,6 +139,7 @@ export default class OrderApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -179,6 +182,7 @@ export default class OrderApi {
         'filter': filter
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -221,6 +225,7 @@ export default class OrderApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -266,6 +271,7 @@ export default class OrderApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };

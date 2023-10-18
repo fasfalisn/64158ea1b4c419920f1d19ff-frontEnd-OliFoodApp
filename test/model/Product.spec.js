@@ -60,32 +60,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property productname (base name: "productname")', function() {
-      // uncomment below and update the code to test the property productname
+    it('should have the property productName (base name: "productName")', function() {
+      // uncomment below and update the code to test the property productName
       //var instance = new TempApi.Product();
       //expect(instance).to.be();
     });
 
-    it('should have the property productdesc (base name: "productdesc")', function() {
-      // uncomment below and update the code to test the property productdesc
+    it('should have the property productDesc (base name: "productDesc")', function() {
+      // uncomment below and update the code to test the property productDesc
       //var instance = new TempApi.Product();
       //expect(instance).to.be();
     });
 
-    it('should have the property productimage (base name: "productimage")', function() {
-      // uncomment below and update the code to test the property productimage
+    it('should have the property productImage (base name: "productImage")', function() {
+      // uncomment below and update the code to test the property productImage
       //var instance = new TempApi.Product();
       //expect(instance).to.be();
     });
 
-    it('should have the property productcategory (base name: "productcategory")', function() {
-      // uncomment below and update the code to test the property productcategory
+    it('should have the property productCategory (base name: "productCategory")', function() {
+      // uncomment below and update the code to test the property productCategory
       //var instance = new TempApi.Product();
       //expect(instance).to.be();
     });
 
-    it('should have the property productunit (base name: "productunit")', function() {
-      // uncomment below and update the code to test the property productunit
+    it('should have the property productUnit (base name: "productUnit")', function() {
+      // uncomment below and update the code to test the property productUnit
       //var instance = new TempApi.Product();
       //expect(instance).to.be();
     });

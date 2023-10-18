@@ -83,34 +83,34 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
       };});
 document.getElementById('iy0oer').onclick = (event) => {
     event.preventDefault();
-    let productId = window.location.pathname.replace('/EditProduct/','');let product = new TempApi.Product();product['productname'] = document.querySelector("[annotationname = 'productname']").value;product['productcategory'] = document.querySelector("[annotationname = 'productcategory']").value;product['productimage'] = {
-        data: document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'productimage']").src,
-        name: document.querySelector("[annotationname = 'productimage']").getAttribute("name")
-      };product['productunit'] = document.querySelector("[annotationname = 'productunit']").value;product['productdesc'] = document.querySelector("[annotationname = 'productdesc']").value; let opts = {product};apiProductApi.updateproduct( productId, opts, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = productname]').value = response.body.query.productname ;document.querySelector('[annotationname = productcategory]').value = response.body.query.productcategory ;
-      if(response.body.query.productimage !== undefined){
+    let productId = window.location.pathname.replace('/EditProduct/','');let product = new TempApi.Product();product['productName'] = document.querySelector("[annotationname = 'productName']").value;product['productCategory'] = document.querySelector("[annotationname = 'productCategory']").value;product['productImage'] = {
+        data: document.querySelector("[annotationname = 'productImage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'productImage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'productImage']").src,
+        name: document.querySelector("[annotationname = 'productImage']").getAttribute("name")
+      };product['productUnit'] = document.querySelector("[annotationname = 'productUnit']").value;product['productDesc'] = document.querySelector("[annotationname = 'productDesc']").value; let opts = {product};apiProductApi.updateproduct( productId, opts, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = productName]').value = response.body.query.productName ;document.querySelector('[annotationname = productCategory]').value = response.body.query.productCategory ;
+      if(response.body.query.productImage !== undefined){
 
-        if(document.querySelector('[annotationname = productimage]').getAttribute('type') === 'file'){
-          document.querySelector('[annotationname = productimage]').setAttribute('data-image-base64',response.body.query.productimage.data);
+        if(document.querySelector('[annotationname = productImage]').getAttribute('type') === 'file'){
+          document.querySelector('[annotationname = productImage]').setAttribute('data-image-base64',response.body.query.productImage.data);
         }
         else{
-          document.querySelector('[annotationname = productimage]').src = response.body.query.productimage.data;
+          document.querySelector('[annotationname = productImage]').src = response.body.query.productImage.data;
         }
-        document.querySelector('[annotationname = productimage]').name = response.body.query.productimage.name;
+        document.querySelector('[annotationname = productImage]').name = response.body.query.productImage.name;
       }
-      document.querySelector('[annotationname = productunit]').value = response.body.query.productunit ;document.querySelector('[annotationname = productdesc]').value = response.body.query.productdesc ;{   location.href= '/MyProducts' ;}}});};window.onload = () => {let productId = window.location.pathname.replace('/EditProduct/','');apiProductApi.getproduct( productId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); try { document.querySelector('[annotationname = productname]').value = response.body.query.productname; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productdesc]').value = response.body.query.productdesc; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productcategory]').value = response.body.query.productcategory; } catch (e) { console.log(e) };try { 
-      if(response.body.query.productimage !== undefined){
-        if(document.querySelector('[annotationname = productimage]').getAttribute('type') === 'file'){
-          document.querySelector('[annotationname = productimage]').setAttribute('data-image-base64',response.body.query.productimage.data);
-          let fileName = response.body.query.productimage.name;
-          let file = new File([response.body.query.productimage.data], fileName,{lastModified:new Date().getTime()}, 'utf-8');
+      document.querySelector('[annotationname = productUnit]').value = response.body.query.productUnit ;document.querySelector('[annotationname = productDesc]').value = response.body.query.productDesc ;{   location.href= '/MyProducts' ;}}});};window.onload = () => {let productId = window.location.pathname.replace('/EditProduct/','');apiProductApi.getproduct( productId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); try { document.querySelector('[annotationname = productName]').value = response.body.query.productName; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productDesc]').value = response.body.query.productDesc; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productCategory]').value = response.body.query.productCategory; } catch (e) { console.log(e) };try { 
+      if(response.body.query.productImage !== undefined){
+        if(document.querySelector('[annotationname = productImage]').getAttribute('type') === 'file'){
+          document.querySelector('[annotationname = productImage]').setAttribute('data-image-base64',response.body.query.productImage.data);
+          let fileName = response.body.query.productImage.name;
+          let file = new File([response.body.query.productImage.data], fileName,{lastModified:new Date().getTime()}, 'utf-8');
           let container = new DataTransfer();
           container.items.add(file);
 
-          document.querySelector("[annotationname = productimage]").files = container.files;
+          document.querySelector("[annotationname = productImage]").files = container.files;
         }
         else {
-          document.querySelector('[annotationname = productimage]').src = response.body.query.productimage.data ;
+          document.querySelector('[annotationname = productImage]').src = response.body.query.productImage.data ;
         }
-        document.querySelector('[annotationname = productimage]').name = response.body.query.productimage.name ;
+        document.querySelector('[annotationname = productImage]').name = response.body.query.productImage.name ;
       }
-       } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productunit]').value = response.body.query.productunit; } catch (e) { console.log(e) };}});};
+       } catch (e) { console.log(e) };try { document.querySelector('[annotationname = productUnit]').value = response.body.query.productUnit; } catch (e) { console.log(e) };}});};

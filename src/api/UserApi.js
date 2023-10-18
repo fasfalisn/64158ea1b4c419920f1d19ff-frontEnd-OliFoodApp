@@ -60,6 +60,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -70,6 +71,60 @@ export default class UserApi {
       let returnType = User;
       return this.apiClient.callApi(
         '/user', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    loginuser(useremail, password, callback) {
+      let postBody = { "useremail": useremail, "password": password };
+      // verify the required parameter 'user' is set
+      if (useremail === undefined || useremail === null) {
+        throw new Error("Missing the required parameter 'user' when calling createuser");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = User;
+      return this.apiClient.callApi(
+        '/login', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    registeruser(useremail, password, username, usercategory, callback) {
+      let postBody = { "useremail": useremail, "password": password, "username": username, "usercategory": usercategory};
+      // verify the required parameter 'user' is set
+      if (useremail === undefined || useremail === null) {
+        throw new Error("Missing the required parameter 'user' when calling createuser");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = User;
+      return this.apiClient.callApi(
+        '/register', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -101,6 +156,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -137,6 +193,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -179,6 +236,7 @@ export default class UserApi {
         'filter': filter
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -221,6 +279,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -266,6 +325,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };

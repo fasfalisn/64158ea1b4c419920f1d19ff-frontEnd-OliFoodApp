@@ -26,8 +26,8 @@ let apiUserApi = new TempApi.UserApi();import TempApi from '../src/index';docume
     
     
     
-      const tableDataElementproductname = insideSubdocument.querySelectorAll("[annotationname = 'productname']");
-      const tableDataElementproductdesc = insideSubdocument.querySelectorAll("[annotationname = 'productdesc']");
+      const tableDataElementproductname = insideSubdocument.querySelectorAll("[annotationname = 'productName']");
+      const tableDataElementproductdesc = insideSubdocument.querySelectorAll("[annotationname = 'productDesc']");
     tableDatauserproducts.forEach((data, indexuserproducts) => {
       if(tableDataElementproductname.length <= indexuserproducts) {
         return;
@@ -35,13 +35,13 @@ let apiUserApi = new TempApi.UserApi();import TempApi from '../src/index';docume
        
     try {
       if (tableDataElementproductname[indexuserproducts] !== null) {
-        tableDataElementproductname[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productname;
+        tableDataElementproductname[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName;
       }
     }
     catch(e) {console.log(e);}; 
     try {
       if (tableDataElementproductdesc[indexuserproducts] !== null) {
-        tableDataElementproductdesc[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productdesc;
+        tableDataElementproductdesc[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productDesc;
       }
     }
     catch(e) {console.log(e);};

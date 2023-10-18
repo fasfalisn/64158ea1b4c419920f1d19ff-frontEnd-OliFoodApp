@@ -23,15 +23,15 @@ class Product {
     /**
      * Constructs a new <code>Product</code>.
      * @alias module:model/Product
-     * @param productname {String} 
-     * @param productdesc {String} 
-     * @param productimage {module:model/UserUserimage} 
-     * @param productcategory {String} 
-     * @param productunit {String} 
+     * @param productName {String} 
+     * @param productDesc {String} 
+     * @param productImage {module:model/UserUserimage} 
+     * @param productCategory {String} 
+     * @param productUnit {String} 
      */
-    constructor(productname, productdesc, productimage, productcategory, productunit) { 
+    constructor(productName, productDesc, productImage, productCategory, productUnit) { 
         
-        Product.initialize(this, productname, productdesc, productimage, productcategory, productunit);
+        Product.initialize(this, productName, productDesc, productImage, productCategory, productUnit);
     }
 
     /**
@@ -39,12 +39,12 @@ class Product {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, productname, productdesc, productimage, productcategory, productunit) { 
-        obj['productname'] = productname;
-        obj['productdesc'] = productdesc;
-        obj['productimage'] = productimage;
-        obj['productcategory'] = productcategory;
-        obj['productunit'] = productunit;
+    static initialize(obj, productName, productDesc, productImage, productCategory, productUnit) { 
+        obj['productName'] = productName;
+        obj['productDesc'] = productDesc;
+        obj['productImage'] = productImage;
+        obj['productCategory'] = productCategory;
+        obj['productUnit'] = productUnit;
     }
 
     /**
@@ -61,20 +61,20 @@ class Product {
             if (data.hasOwnProperty('_id')) {
                 obj['_id'] = ApiClient.convertToType(data['_id'], 'String');
             }
-            if (data.hasOwnProperty('productname')) {
-                obj['productname'] = ApiClient.convertToType(data['productname'], 'String');
+            if (data.hasOwnProperty('productName')) {
+                obj['productName'] = ApiClient.convertToType(data['productName'], 'String');
             }
-            if (data.hasOwnProperty('productdesc')) {
-                obj['productdesc'] = ApiClient.convertToType(data['productdesc'], 'String');
+            if (data.hasOwnProperty('productDesc')) {
+                obj['productDesc'] = ApiClient.convertToType(data['productDesc'], 'String');
             }
-            if (data.hasOwnProperty('productimage')) {
-                obj['productimage'] = UserUserimage.constructFromObject(data['productimage']);
+            if (data.hasOwnProperty('productImage')) {
+                obj['productImage'] = UserUserimage.constructFromObject(data['productImage']);
             }
-            if (data.hasOwnProperty('productcategory')) {
-                obj['productcategory'] = ApiClient.convertToType(data['productcategory'], 'String');
+            if (data.hasOwnProperty('productCategory')) {
+                obj['productCategory'] = ApiClient.convertToType(data['productCategory'], 'String');
             }
-            if (data.hasOwnProperty('productunit')) {
-                obj['productunit'] = ApiClient.convertToType(data['productunit'], 'String');
+            if (data.hasOwnProperty('productUnit')) {
+                obj['productUnit'] = ApiClient.convertToType(data['productUnit'], 'String');
             }
         }
         return obj;
@@ -89,29 +89,29 @@ class Product {
 Product.prototype['_id'] = undefined;
 
 /**
- * @member {String} productname
+ * @member {String} productName
  */
-Product.prototype['productname'] = undefined;
+Product.prototype['productName'] = undefined;
 
 /**
- * @member {String} productdesc
+ * @member {String} productDesc
  */
-Product.prototype['productdesc'] = undefined;
+Product.prototype['productDesc'] = undefined;
 
 /**
- * @member {module:model/UserUserimage} productimage
+ * @member {module:model/UserUserimage} productImage
  */
-Product.prototype['productimage'] = undefined;
+Product.prototype['productImage'] = undefined;
 
 /**
- * @member {String} productcategory
+ * @member {String} productCategory
  */
-Product.prototype['productcategory'] = undefined;
+Product.prototype['productCategory'] = undefined;
 
 /**
- * @member {String} productunit
+ * @member {String} productUnit
  */
-Product.prototype['productunit'] = undefined;
+Product.prototype['productUnit'] = undefined;
 
 
 

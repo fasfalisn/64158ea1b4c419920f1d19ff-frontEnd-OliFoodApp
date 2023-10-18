@@ -59,33 +59,33 @@ let apiProductApi = new TempApi.ProductApi();import TempApi from '../src/index';
     if(subDataElements.length > i)
       {
         try { 
-const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productimage']");
-if(insideSubDataElement !== null && data[data.length -i -1].productimage !== undefined){
-  insideSubDataElement.src = data[data.length -i -1].productimage.data;
-  insideSubDataElement.name = data[data.length -i -1].productimage.name;
+const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productImage']");
+if(insideSubDataElement !== null && data[data.length -i -1].productImage !== undefined){
+  insideSubDataElement.src = data[data.length -i -1].productImage.data;
+  insideSubDataElement.name = data[data.length -i -1].productImage.name;
 }
-else if(subDataElements[i].getAttribute('annotationname') === 'productimage' && data[data.length -i -1].productimage !== undefined){
-  subDataElements[i].src = data[data.length -i -1].productimage.data;
-  subDataElements[i].name = data[data.length -i -1].productimage.name;
+else if(subDataElements[i].getAttribute('annotationname') === 'productImage' && data[data.length -i -1].productImage !== undefined){
+  subDataElements[i].src = data[data.length -i -1].productImage.data;
+  subDataElements[i].name = data[data.length -i -1].productImage.name;
 }
  } catch (e) { console.log(e) };try { 
-      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productname']");
+      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productName']");
       if(insideSubDataElement !== null){
-        insideSubDataElement.textContent = data[data.length -i -1].productname;
+        insideSubDataElement.textContent = data[data.length -i -1].productName;
         
       }
-      else if(subDataElements[i].getAttribute('annotationname') === 'productname'){
-        subDataElements[i].textContent = data[data.length -i -1].productname;
+      else if(subDataElements[i].getAttribute('annotationname') === 'productName'){
+        subDataElements[i].textContent = data[data.length -i -1].productName;
         
       }
      } catch (e) { console.log(e) };try { 
-      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productdesc']");
+      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productDesc']");
       if(insideSubDataElement !== null){
-        insideSubDataElement.textContent = data[data.length -i -1].productdesc;
+        insideSubDataElement.textContent = data[data.length -i -1].productDesc;
         
       }
-      else if(subDataElements[i].getAttribute('annotationname') === 'productdesc'){
-        subDataElements[i].textContent = data[data.length -i -1].productdesc;
+      else if(subDataElements[i].getAttribute('annotationname') === 'productDesc'){
+        subDataElements[i].textContent = data[data.length -i -1].productDesc;
         
       }
      } catch (e) { console.log(e) };

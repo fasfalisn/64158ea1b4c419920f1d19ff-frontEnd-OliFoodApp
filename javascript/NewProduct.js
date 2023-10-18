@@ -83,8 +83,8 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
       };});
 document.getElementById('iy0oer').onclick = (event) => {
     event.preventDefault();
-    product['productname'] = document.querySelector("[annotationname = 'productname']").value;product['productcategory'] = document.querySelector("[annotationname = 'productcategory']").value;product['productimage'] = {
-        data: document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'productimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'productimage']").src,
-        name: document.querySelector("[annotationname = 'productimage']").getAttribute("name")
+    product['productName'] = document.querySelector("[annotationname = 'productName']").value;product['productCategory'] = document.querySelector("[annotationname = 'productCategory']").value;product['productImage'] = {
+        data: document.querySelector("[annotationname = 'productImage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'productImage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'productImage']").src,
+        name: document.querySelector("[annotationname = 'productImage']").getAttribute("name")
       };
-      product['productunit'] = document.querySelector("[annotationname = 'productunit']").value;product['productdesc'] = document.querySelector("[annotationname = 'productdesc']").value;apiProductApi.createproduct( product, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {   location.href= '/MyProducts' ;}}});};window.onload = () => {};
+      product['productUnit'] = document.querySelector("[annotationname = 'productUnit']").value;product['productDesc'] = document.querySelector("[annotationname = 'productDesc']").value;apiProductApi.createproduct( product, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {   location.href= '/MyProducts' ;}}});};window.onload = () => {};

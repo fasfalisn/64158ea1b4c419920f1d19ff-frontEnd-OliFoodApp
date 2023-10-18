@@ -36,9 +36,11 @@ class Order {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, ordercustomer, ordersupplier) { 
+    static initialize(obj, ordercustomer, ordersupplier, orderproducts, orderstatus) { 
+        obj['orderstatus'] = orderstatus;
         obj['ordercustomer'] = ordercustomer;
         obj['ordersupplier'] = ordersupplier;
+        obj['orderproducts'] = orderproducts;
     }
 
     /**
@@ -55,11 +57,17 @@ class Order {
             if (data.hasOwnProperty('_id')) {
                 obj['_id'] = ApiClient.convertToType(data['_id'], 'String');
             }
+            if (data.hasOwnProperty('orderstatus')) {
+                obj['orderstatus'] = ApiClient.convertToType(data['orderstatus'], 'String');
+            }
             if (data.hasOwnProperty('ordercustomer')) {
                 obj['ordercustomer'] = ApiClient.convertToType(data['ordercustomer'], User);
             }
             if (data.hasOwnProperty('ordersupplier')) {
                 obj['ordersupplier'] = ApiClient.convertToType(data['ordersupplier'], User);
+            }
+            if (data.hasOwnProperty('orderproducts')) {
+                obj['orderproducts'] = ApiClient.convertToType(data['orderproducts'], [Product, 'String']);
             }
         }
         return obj;
@@ -74,6 +82,11 @@ class Order {
 Order.prototype['_id'] = undefined;
 
 /**
+ * @member {String} orderstatus
+ */
+Order.prototype['orderstatus'] = undefined;
+
+/**
  * @member {module:model/User} ordercustomer
  */
 Order.prototype['ordercustomer'] = undefined;
@@ -82,6 +95,8 @@ Order.prototype['ordercustomer'] = undefined;
  * @member {module:model/User} ordersupplier
  */
 Order.prototype['ordersupplier'] = undefined;
+
+Order.prototype['orderproducts'] = undefined;
 
 
 
