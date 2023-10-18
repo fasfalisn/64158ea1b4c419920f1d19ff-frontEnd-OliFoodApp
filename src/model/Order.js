@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Product from './Product';
 import User from './User';
 
 /**
