@@ -196,22 +196,22 @@ window.onload = () => {
           catch (e) {
             console.log(e)
           };
-          try {
-            const insideSubdocument = subDataElements[i].querySelector("[annotationname = 'ordersupplier']");
-            if (insideSubdocument !== null) {
-            }
-            if (data[data.length - i - 1].ordersupplier._id) {
-              map.set(
-                subDataElements[i].querySelector(
-                  "[annotationname = 'ordersupplier']"
-                ).getAttribute("id"),
-                data[data.length - i - 1].ordersupplier
-              );
-            }
-          }
-          catch (e) {
-            console.log(e)
-          };
+          // try {
+          //   const insideSubdocument = subDataElements[i].querySelector("[annotationname = 'ordersupplier']");
+          //   if (insideSubdocument !== null) {
+          //   }
+          //   if (data[data.length - i - 1].ordersupplier._id) {
+          //     map.set(
+          //       subDataElements[i].querySelector(
+          //         "[annotationname = 'ordersupplier']"
+          //       ).getAttribute("id"),
+          //       data[data.length - i - 1].ordersupplier
+          //     );
+          //   }
+          // }
+          // catch (e) {
+          //   console.log(e)
+          // };
           map.set(subDataElements[i].getAttribute('id'), data[data.length - i - 1])
         }
       }
