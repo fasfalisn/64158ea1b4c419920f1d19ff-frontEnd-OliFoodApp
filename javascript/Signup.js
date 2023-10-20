@@ -1,7 +1,15 @@
+let apiUserApi = new TempApi.UserApi(); 
+import TempApi from '../src/index'; 
+let user = new TempApi.User(); 
+
 document.getElementById('i9gy8').onclick = (event) => {
     event.preventDefault();
     if(document.getElementById('idqx3').value !== document.getElementById('form3Example4c').value){
         console.log('passwords don\'t match')
+        return;
+      }
+      if(document.getElementById('form3Example4c').value === '' || document.getElementById('form3Example1c').value === ''){
+        console.log('empty field');
         return;
       }
       if(document.getElementById('form2Example3c').checked !== true){

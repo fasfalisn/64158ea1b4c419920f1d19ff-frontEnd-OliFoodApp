@@ -4,7 +4,7 @@ import TempApi from '../src/index';
 
 document.getElementById('i02ok').onclick = (event) => {
   event.preventDefault();
-  { location.href = '/Profile'; }
+  { location.href = '/MyProfile'; }
 };
 
 document.getElementById('ikd4x').onclick = (event) => {
@@ -128,10 +128,10 @@ document.getElementById('iw1pbl').onclick = (event) => {
 
 
 window.onload = () => {
-  // const spinner = document.getElementById('spinner');
-  // const list = document.getElementById('iagol');
-  // spinner.style.display = 'block';
-  // list.style.display = 'none';
+  const spinner = document.getElementById('spinner');
+  const list = document.getElementById('irwbh');
+  spinner.style.display = 'block';
+  list.style.display = 'none';
 
 
   const user = JSON.parse(localStorage.getItem('user'));
@@ -139,8 +139,12 @@ window.onload = () => {
     location.href = "/Login"
   }
   if (user.usercategory === 'Προμηθευτής') {
-    document.getElementById('iti4j').style.display = 'none';
-
+    document.getElementById('iydox').style.display = 'none';
+    document.getElementById('iz189').style.display = 'none';
+    document.getElementById('i37m4').style.display = 'none';
+  }
+  else {
+    document.getElementById('iy7v8').style.display = 'none';
   }
 
   try {
@@ -161,6 +165,8 @@ window.onload = () => {
     }
     else {
       console.log('API called successfully. Returned data: ' + data);
+      spinner.style.display = 'none';
+      list.style.display = 'block';
       const subDataElements = [...document.getElementById("ixoyu").querySelectorAll("[dataitem='true']")].filter(
         (element, index, array) =>
           !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
@@ -170,6 +176,7 @@ window.onload = () => {
         if (subDataElements.length > i) {
           try {
             const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'orderstatus']");
+            console.log(insideSubDataElement);
             if (insideSubDataElement !== null) {
               insideSubDataElement.textContent = data[data.length - i - 1].orderstatus;
             }
@@ -182,7 +189,10 @@ window.onload = () => {
           };
           try {
             const insideSubdocument = subDataElements[i].querySelector("[annotationname = 'ordercustomer']");
+            console.log(insideSubdocument);
             if (insideSubdocument !== null) {
+              insideSubdocument.textContent = (user.usercategory === 'Πελάτης') ? data[data.length - i - 1].ordersupplier.username : data[data.length - i - 1].ordercustomer.username;
+                
             }
             if (data[data.length - i - 1].ordercustomer._id) {
               map.set(
