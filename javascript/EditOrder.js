@@ -115,6 +115,8 @@ window.onload = () => {
       }
       else {
         document.getElementById('iy7v8').style.display = 'none';
+        document.getElementById("i9a0c").style.display = 'none';
+        document.getElementById("i64aj").style.display = 'none';
       }
 
     try {
@@ -154,7 +156,7 @@ window.onload = () => {
                             );
                         if (attributeSubdocumentElement !== null) {
                             attributeSubdocumentElement.textContent =
-                                response.body.query.ordercustomer.username;
+                                (user.usercategory === 'Πελάτης') ? response.body.query.ordersupplier.username : response.body.query.ordercustomer.username;
                         }
                     } catch (e) {
                         console.log(e);

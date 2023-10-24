@@ -43,6 +43,14 @@ document.getElementById('ircth').onclick = (event) => {
     location.href= '/Login' ;
   }
 };
+document.getElementById('iz189').onclick = (event) => {
+  event.preventDefault();
+  {
+    let transitionId = window.location.href.split('/').at(-1);
+    
+    location.href= '/Profile/' + transitionId;
+  }
+};
 document.getElementById('i64aj').onclick = (event) => {
   event.preventDefault();
   {
@@ -80,6 +88,28 @@ document.getElementById('i64aj').onclick = (event) => {
       location.href = "/OrderSummary/" + userId;
   }
 };
+
+const searchInput = document.getElementById('ihxvoh'); 
+
+const subDataElements = [
+  ...document.getElementById('imt3z').querySelectorAll("[dataitem='true']")
+];
+
+searchInput.addEventListener('input', function() {
+  const searchTerm = this.value.toLowerCase();
+  subDataElements.forEach(element => {
+    const usernameElement = element.querySelector("[annotationname='productName']");
+    if (usernameElement && !usernameElement.textContent.includes('Title here')) {
+      const username = usernameElement.textContent.toLowerCase();
+      if (username.includes(searchTerm)) {
+        element.style.display = 'block'; // Show the element
+      } else {
+        element.style.display = 'none'; // Hide the element
+      }
+    }
+  });
+});
+
 window.onload = () => {
   const spinner = document.getElementById('spinner');
   const list = document.getElementById('irwbh');

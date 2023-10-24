@@ -70,6 +70,9 @@ class Order {
             if (data.hasOwnProperty('orderproducts')) {
                 obj['orderproducts'] = ApiClient.convertToType(data['orderproducts'], [Product, 'String']);
             }
+            if (data.hasOwnProperty('orderproducts')) {
+                obj['createdAt'] = ApiClient.convertToType(data['createdAt'], 'Date');
+            }
         }
         return obj;
     }

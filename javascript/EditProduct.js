@@ -106,7 +106,42 @@ document.getElementById("formFile").addEventListener("change", async (e) => {
         );
     };
 });
-document.getElementById("iy0oer").onclick = (event) => {
+
+document.getElementById('iy0oer').onclick = (event) => {
+    event.preventDefault();
+    let productId = window.location.pathname.replace('/EditProduct/','');
+    if(productId === '/EditProduct' || productId === ''){
+      let parentId = "";
+      const storedData = window.localStorage.getItem('data');
+      const newMap = new Map(JSON.parse(storedData));
+      newMap.forEach((value, key) => {
+        if (
+          document
+          .getElementById(key)
+          .contains(document.getElementById("iy0oer")) === true &&
+          document.getElementById(key).contains(document.getElementById(parentId)) === false
+        ) {
+          productId = value._id;
+          parentId = key;
+        }
+      }
+                    );
+    }
+    apiProductApi.deleteproduct( productId, (error, data, response) => {
+      if (error) {
+        console.error(error);
+      }
+      else {
+        console.log('API called successfully.');
+        {
+          location.href= '/MyProducts' ;
+        }
+      }
+    }
+                               );
+  };
+
+document.getElementById("i0uc5k").onclick = (event) => {
     event.preventDefault();
     let productId = window.location.pathname.replace("/EditProduct/", "");
     let product = new TempApi.Product();

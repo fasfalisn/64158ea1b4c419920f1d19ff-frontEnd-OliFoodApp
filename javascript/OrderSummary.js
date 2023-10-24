@@ -192,6 +192,17 @@ window.onload = () => {
                     }
                     catch (e) {
                         console.log(e) };
+                    try {
+                      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productDesc']");
+                      if(insideSubDataElement !== null){
+                      insideSubDataElement.textContent = product.productDesc;
+                      }
+                      else if(subDataElements[i].getAttribute('annotationname') === 'productDesc'){
+                      subDataElements[i].textContent = product.productDesc;
+                      }
+                    }
+                    catch (e) {
+                        console.log(e) };
                     // try {
                     //   const insideSubDataElement = subDataElements[i].querySelector("[listimage]");
                     //   if(insideSubDataElement !== null){
