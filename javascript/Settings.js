@@ -33,6 +33,7 @@ document.getElementById("i0l69").onclick = (event) => {
 document.getElementById("ircth").onclick = (event) => {
     event.preventDefault();
     localStorage.removeItem('user');
+    localStorage.removeItem('data');
     {
         location.href = "/Login";
     }

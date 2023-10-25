@@ -43,16 +43,12 @@ document.getElementById('i9kwo').onclick = (event) => {
 document.getElementById('ircth').onclick = (event) => {
   event.preventDefault();
   localStorage.removeItem('user');
+    localStorage.removeItem('data');
   {
     location.href= '/Login' ;
   }
 };
-document.getElementById('itrm2').onclick = (event) => {
-  event.preventDefault();
-  {
-    window.document.location = '';
-  }
-};
+
 document.getElementById('i64aj').onclick = (event) => {
   event.preventDefault();
   let supplierId = window.location.pathname.replace('/OrderSummary/','');
@@ -158,180 +154,47 @@ window.onload = () => {
         !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
     );
 
-    Object.keys(savedOrder).forEach((item,i) => {
-        const savedProduct = savedOrder[item];
-        let product;
-        
-        if(subDataElements.length > i)
-        {
-            apiProductApi.getproduct(item, (error,data,response) => {
-                if(error){
-                    console.log(error);
-                } else {
-                    product = response.body.query;
-                    console.log(product);
-                      try {
-                        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productName']");
-                        if(insideSubDataElement !== null){
-                          insideSubDataElement.textContent = product.productName;
-                        }
-                        else if(subDataElements[i].getAttribute('annotationname') === 'productName'){
-                          subDataElements[i].textContent = product.productName;
-                        }
-                      }
-                      catch (e) {
-                        console.log(e) };
-                    try {
-                        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productQuantity']");
-                        if(insideSubDataElement !== null){
-                        insideSubDataElement.textContent = savedProduct.quantity;
-                        }
-                        else if(subDataElements[i].getAttribute('annotationname') === 'productQuantity'){
-                        subDataElements[i].textContent = savedProduct.quantity;
-                        }
-                    }
-                    catch (e) {
-                        console.log(e) };
-                    try {
-                      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productDesc']");
-                      if(insideSubDataElement !== null){
-                      insideSubDataElement.textContent = product.productDesc;
-                      }
-                      else if(subDataElements[i].getAttribute('annotationname') === 'productDesc'){
-                      subDataElements[i].textContent = product.productDesc;
-                      }
-                    }
-                    catch (e) {
-                        console.log(e) };
-                    // try {
-                    //   const insideSubDataElement = subDataElements[i].querySelector("[listimage]");
-                    //   if(insideSubDataElement !== null){
-                    //     insideSubDataElement.src = product.productImage.data;
-                    //   }
-                    // }
-                    // catch (e) {
-                    //     console.log(e) };
-                      try {
-                        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productUnit']");
-                        if(insideSubDataElement !== null){
-                          insideSubDataElement.textContent = product.productUnit;
-                        }
-                        else if(subDataElements[i].getAttribute('annotationname') === 'productUnit'){
-                          subDataElements[i].textContent = product.productUnit;
-                        }
-                      }
-                      catch (e) {
-                        console.log(e) };
-                }
-            })
-        
-        //   map.set(subDataElements[i].getAttribute('id'), savedOrder[savedOrder.length-i-1])
+
+    const tbody = document.getElementById("i3bch");
+    Object.keys(savedOrder).forEach((item, i) => {
+      const savedProduct = savedOrder[item];
+      // Create a new table row as an HTML string
+
+      apiProductApi.getproduct(item, (error,data,response) => {
+        if(error){
+            console.log(error);
+        } else {
+            let product = response.body.query;
+            console.log(product.productName);
+            const newRowHTML = `
+                    <tr dataitem="true" class="list-item-content flex classRule-ihesz">
+                      <td class="list-cell-left classRule-isizv">
+                        <img alt="Image" listimage src="${product.productImage.data}" annotationname="productImage" class="list-item-image classRule-i549k"/>
+                      </td>
+                      <td class="list-cell-right classRule-itrxx">
+                        <div class="form-group flex wabli-box classRule-i8tkm">
+                          <h1 listtitle annotationname="productName" class="card-title classRule-i5n9k">${product.productName}
+                          </h1>
+                          <div class="form-group flex wabli-box classRule-iwilq">
+                            <div annotationname="productQuantity" class="p-2 mw-100 classRule-i60zm">${savedProduct.quantity}
+                            </div>
+                            <div annotationname="productUnit" class="p-2 mw-100 classRule-isgn1">${product.productUnit}
+                            </div>
+                          </div>
+                        </div>
+                        <p listdescription annotationname="productDesc" class="card-text classRule-il02z">${product.productDesc}
+                        </p>
+                        <hr class="m-2 classRule-ilhe3"/>
+                      </td>
+                    </tr>
+            `;
+          
+            // Append the new row HTML to the table body
+            tbody.insertAdjacentHTML('beforeend', newRowHTML);
+
         }
-        
-      }
-                  );
+    })
+      
+    });
 
-          [...subDataElements].forEach(
-            (element, index) => {
-                parent = subDataElements[index];
-                if (index >= Object.keys(savedOrder).length) {
-                    while (parent.tagName !== "TR") {
-                        parent = parent.parentNode;
-                    }
-                    console.log(parent);
-                    parent.style.display = "none";
-                } else {
-                    subDataElements[
-                        index
-                    ].style.display = "";
-                }
-            }
-        );
-
-
-
-
-
-//   try {
-//     document.querySelector('[annotationname = userproducts]').setAttribute('selected-element',response.body.query.userproducts.undefined);
-//     const insideSubdocument = document.querySelector("[annotationname = 'userproducts']");
-//     if (insideSubdocument !==null) {
-//       const tableDatauserproducts = response.body.query.userproducts;
-//       const tableDataElementproductImage = insideSubdocument.querySelectorAll("[annotationname = 'productImage']");
-//       const tableDataElementproductName = insideSubdocument.querySelectorAll("[annotationname = 'productName']");
-//       const tableDataElementproductUnit = insideSubdocument.querySelectorAll("[annotationname = 'productUnit']");
-//       const tableDataElementproductDesc = insideSubdocument.querySelectorAll("[annotationname = 'productDesc']");
-//       tableDatauserproducts.forEach((data, indexuserproducts) => {
-//         if(tableDataElementproductImage.length <= indexuserproducts) {
-//           return;
-//         }
-//         try {
-//           if (tableDataElementproductImage[indexuserproducts] !== null) {
-//             tableDataElementproductImage[indexuserproducts].src = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productImage;
-//           }
-//         }
-//         catch(e) {
-//           console.log(e);
-//         };
-//         try {
-//           if (tableDataElementproductName[indexuserproducts] !== null) {
-//             tableDataElementproductName[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName;
-//           }
-//         }
-//         catch(e) {
-//           console.log(e);
-//         };
-//         try {
-//           if (tableDataElementproductUnit[indexuserproducts] !== null) {
-//             tableDataElementproductUnit[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productUnit;
-//           }
-//         }
-//         catch(e) {
-//           console.log(e);
-//         };
-//         try {
-//           if (tableDataElementproductDesc[indexuserproducts] !== null) {
-//             tableDataElementproductDesc[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productDesc;
-//           }
-//         }
-//         catch(e) {
-//           console.log(e);
-//         };
-//         {
-//           let parenttableDataElementproductImage =  tableDataElementproductImage[indexuserproducts];
-//           while(parenttableDataElementproductImage.tagName !== "TR") {
-//             parenttableDataElementproductImage = parenttableDataElementproductImage.parentNode;
-//           }
-//           map.set(
-//             parenttableDataElementproductImage.getAttribute("id"),
-//             tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1]
-//           );
-//         }
-//       }
-//                                    );
-//       [...tableDataElementproductImage].forEach((element, index) => {
-//         parent = tableDataElementproductImage[index];
-//         if (index >= tableDatauserproducts.length) {
-//           while(parent.tagName !== "TR") {
-//             parent = parent.parentNode;
-//           }
-//           parent.style.display = "none";
-//         }
-//         else {
-//           tableDataElementproductImage[index].style.display = "";
-//         }
-//       }
-//                                                );
-//     }
-//     if(response.body.query.userproducts._id){
-//       map.set(
-//         document.querySelector(
-//           "[annotationname = 'userproducts']"
-//         ).getAttribute("id"),
-//         response.body.query.userproducts
-//       );
-//     }
-//   }
-//   catch (e) {
-//     console.log(e) };
 };

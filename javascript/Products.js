@@ -39,6 +39,7 @@ document.getElementById('i9kwo').onclick = (event) => {
 document.getElementById('ircth').onclick = (event) => {
   event.preventDefault();
   localStorage.removeItem('user');
+    localStorage.removeItem('data');
   {
     location.href= '/Login' ;
   }
@@ -160,72 +161,40 @@ window.onload = () => {
         const insideSubdocument = document.querySelector("[annotationname = 'userproducts']");
         if (insideSubdocument !==null) {
           const tableDatauserproducts = response.body.query.userproducts;
-          const tableDataElementproductImage = insideSubdocument.querySelectorAll("[annotationname = 'productImage']");
-          const tableDataElementproductName = insideSubdocument.querySelectorAll("[annotationname = 'productName']");
-          const tableDataElementproductUnit = insideSubdocument.querySelectorAll("[annotationname = 'productUnit']");
-          const tableDataElementproductDesc = insideSubdocument.querySelectorAll("[annotationname = 'productDesc']");
+          const tbody = document.getElementById("i3bch");
           tableDatauserproducts.forEach((data, indexuserproducts) => {
-            if(tableDataElementproductImage.length <= indexuserproducts) {
-              return;
-            }
-            try {
-              if (tableDataElementproductImage[indexuserproducts] !== null) {
-                tableDataElementproductImage[indexuserproducts].src = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productImage.data;
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            try {
-              if (tableDataElementproductName[indexuserproducts] !== null) {
-                tableDataElementproductName[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName;
-                tableDataElementproductName[indexuserproducts].setAttribute('data-product-id',tableDatauserproducts[tableDatauserproducts.length -indexuserproducts -1]._id); 
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            try {
-              if (tableDataElementproductUnit[indexuserproducts] !== null) {
-                tableDataElementproductUnit[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productUnit;
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            try {
-              if (tableDataElementproductDesc[indexuserproducts] !== null) {
-                tableDataElementproductDesc[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productDesc;
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            {
-              let parenttableDataElementproductImage =  tableDataElementproductImage[indexuserproducts];
-              while(parenttableDataElementproductImage.tagName !== "TR") {
-                parenttableDataElementproductImage = parenttableDataElementproductImage.parentNode;
-              }
-              map.set(
-                parenttableDataElementproductImage.getAttribute("id"),
-                tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1]
-              );
-            }
-          }
-                                       );
-          [...tableDataElementproductImage].forEach((element, index) => {
-            parent = tableDataElementproductImage[index];
-            if (index >= tableDatauserproducts.length) {
-              while(parent.tagName !== "TR") {
-                parent = parent.parentNode;
-              }
-              parent.style.display = "none";
-            }
-            else {
-              tableDataElementproductImage[index].style.display = "";
-            }
-          }
-                                                   );
+            // Create a new table row as an HTML string
+            console.log(tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName);
+            const newRowHTML = `
+                    <tr dataitem="true" class="list-item-content flex classRule-ihesz">
+                      <td class="list-cell-left classRule-isizv">
+                        <img alt="Image" listimage src="${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productImage.data}" id="i549k" annotationname="productImage" class="list-item-image classRule-i549k"/>
+                      </td>
+                      <td class="list-cell-right classRule-itrxx">
+                        <div class="form-group flex wabli-box classRule-i8tkm">
+                          <div class="form-group flex wabli-box classRule-i3n1t">
+                            <i class="fs-5 classRule-iqbms bi-heart-fill">
+                            </i>
+                            <h1 listtitle data-product-id=${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1]._id} annotationname="productName" class="card-title classRule-i5n9k">${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName}
+                            </h1>
+                          </div>
+                          <div id="iwilq" class="form-group flex wabli-box classRule-iwilq">
+                            <input type="text" required class="form-control p-2 classRule-iu8gw"/>
+                            <div annotationname="productUnit" class="p-2 mw-100 classRule-i60zm">${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productUnit}
+                            </div>
+                          </div>
+                        </div>
+                        <p listdescription annotationname="productDesc" class="card-text classRule-il02z">${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productDesc}
+                        </p>
+                        <hr id="ilhe3" class="m-2 classRule-ilhe3"/>
+                      </td>
+                    </tr>
+            `;
+          
+            // Append the new row HTML to the table body
+            tbody.insertAdjacentHTML('beforeend', newRowHTML);
+
+          });
         }
         if(response.body.query.userproducts._id){
           map.set(

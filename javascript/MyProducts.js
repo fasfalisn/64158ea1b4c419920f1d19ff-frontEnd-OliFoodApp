@@ -33,6 +33,7 @@ document.getElementById('i9kwo').onclick = (event) => {
 document.getElementById('ircth').onclick = (event) => {
   event.preventDefault();
   localStorage.removeItem('user');
+    localStorage.removeItem('data');
   {
     location.href= '/Login' ;
   }
@@ -43,58 +44,7 @@ document.getElementById('i64aj').onclick = (event) => {
     location.href= '/NewProduct' ;
   }
 };
-document.getElementById('i549k').onclick = (event) => {
-  event.preventDefault();
-  {
-    location.href= '/' ;
-  }
-};
-document.getElementById('i7lwem').onclick = (event) => {
-  event.preventDefault();
-  {
-    let transitionId = window.location.href.split('/').at(-1);
-    let parentId = "";
-    const storedData = window.localStorage.getItem("data");
-    const newMap = new Map(JSON.parse(storedData));
-    newMap.forEach((value, key) => {
-      if (
-        document.getElementById(key) !== null &&
-        document
-        .getElementById(key)
-        .contains(document.getElementById("i7lwem")) === true &&
-        document.getElementById(key).contains(document.getElementById(parentId)) === false
-      ) {
-        transitionId = value._id;
-        parentId = key;
-      }
-    }
-                  );
-    location.href= '/EditProduct/' + transitionId;
-  }
-};
-document.getElementById('iu4u9').onclick = (event) => {
-  event.preventDefault();
-  {
-    let transitionId = window.location.href.split('/').at(-1);
-    let parentId = "";
-    const storedData = window.localStorage.getItem("data");
-    const newMap = new Map(JSON.parse(storedData));
-    newMap.forEach((value, key) => {
-      if (
-        document.getElementById(key) !== null &&
-        document
-        .getElementById(key)
-        .contains(document.getElementById("iu4u9")) === true &&
-        document.getElementById(key).contains(document.getElementById(parentId)) === false
-      ) {
-        transitionId = value._id;
-        parentId = key;
-      }
-    }
-                  );
-    location.href= '/EditProduct/' + transitionId;
-  }
-};
+
 window.onload = () => {
   const spinner = document.getElementById('spinner');
   const list = document.getElementById('irwbh');
@@ -135,62 +85,35 @@ window.onload = () => {
         const insideSubdocument = document.querySelector("[annotationname = 'userproducts']");
         if (insideSubdocument !==null) {
           const tableDatauserproducts = response.body.query.userproducts;
-          const tableDataElementproductImage = insideSubdocument.querySelectorAll("[annotationname = 'productImage']");
-          const tableDataElementproductName = insideSubdocument.querySelectorAll("[annotationname = 'productName']");
-          const tableDataElementproductDesc = insideSubdocument.querySelectorAll("[annotationname = 'productDesc']");
+          const tbody = document.getElementById("i3bch");
           tableDatauserproducts.forEach((data, indexuserproducts) => {
-            if(tableDataElementproductImage.length <= indexuserproducts) {
-              return;
-            }
-            try {
-              if (tableDataElementproductImage[indexuserproducts] !== null) {
-                tableDataElementproductImage[indexuserproducts].src = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productImage.data;
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            try {
-              if (tableDataElementproductName[indexuserproducts] !== null) {
-                tableDataElementproductName[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName;
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            try {
-              if (tableDataElementproductDesc[indexuserproducts] !== null) {
-                tableDataElementproductDesc[indexuserproducts].textContent = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productDesc;
-              }
-            }
-            catch(e) {
-              console.log(e);
-            };
-            {
-              let parenttableDataElementproductImage =  tableDataElementproductImage[indexuserproducts];
-              while(parenttableDataElementproductImage.tagName !== "TR") {
-                parenttableDataElementproductImage = parenttableDataElementproductImage.parentNode;
-              }
-              map.set(
-                parenttableDataElementproductImage.getAttribute("id"),
-                tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1]
-              );
-            }
-          }
-                                       );
-          [...tableDataElementproductImage].forEach((element, index) => {
-            parent = tableDataElementproductImage[index];
-            if (index >= tableDatauserproducts.length) {
-              while(parent.tagName !== "TR") {
-                parent = parent.parentNode;
-              }
-              parent.style.display = "none";
-            }
-            else {
-              tableDataElementproductImage[index].style.display = "";
-            }
-          }
-                                                   );
+            // Create a new table row as an HTML string
+            console.log(tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName);
+            const newRowHTML = `
+              <tr dataitem="true" class="list-item-content flex classRule-ihesz">
+                      <td class="list-cell-left classRule-isizv">
+                        <img alt="Image" listimage src="${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productImage.data}" annotationname="productImage" target_page="-1" class="list-item-image classRule-i549k pointer"/>
+                      </td>
+                      <td class="list-cell-right classRule-itrxx">
+                        <div class="form-group flex wabli-box classRule-i8tkm">
+                          <h1 listtitle annotationname="productName" class="card-title classRule-i5n9k">${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productName}
+                          </h1>
+                          <div class="form-group flex wabli-box classRule-iwilq">
+                            <div transition-by-id target_page="652d37eb49554d95c91e881c" onClick="function nextPage(){location.href= '/EditProduct/' + '${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1]._id}';};nextPage();" class="btn btn-primary pointer classRule-i7lwem">Επεξεργασία
+                            </div>
+                          </div>
+                        </div>
+                        <p listdescription annotationname="productDesc" class="card-text classRule-il02z">${tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1].productDesc}
+                        </p>
+                        <hr class="m-2 classRule-ilhe3"/>
+                      </td>
+                    </tr>
+            `;
+          
+            // Append the new row HTML to the table body
+            tbody.insertAdjacentHTML('beforeend', newRowHTML);
+
+          });
         }
         if(response.body.query.userproducts._id){
           map.set(

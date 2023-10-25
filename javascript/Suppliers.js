@@ -27,6 +27,7 @@ document.getElementById("i9kwo").onclick = (event) => {
 document.getElementById("ircth").onclick = (event) => {
     event.preventDefault();
     localStorage.removeItem('user');
+    localStorage.removeItem('data');
     {
         location.href = "/Login";
     }
