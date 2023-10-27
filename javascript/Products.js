@@ -92,11 +92,10 @@ document.getElementById('i64aj').onclick = (event) => {
 
 const searchInput = document.getElementById('ihxvoh'); 
 
-const subDataElements = [
-  ...document.getElementById('imt3z').querySelectorAll("[dataitem='true']")
-];
-
 searchInput.addEventListener('input', function() {
+  const subDataElements = [
+    ...document.getElementById('imt3z').querySelectorAll("[dataitem='true']")
+  ];
   const searchTerm = this.value.toLowerCase();
   subDataElements.forEach(element => {
     const usernameElement = element.querySelector("[annotationname='productName']");

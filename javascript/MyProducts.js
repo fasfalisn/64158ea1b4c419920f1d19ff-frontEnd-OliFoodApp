@@ -45,6 +45,26 @@ document.getElementById('i64aj').onclick = (event) => {
   }
 };
 
+const searchInput = document.getElementById('ihxvoh'); 
+
+searchInput.addEventListener('input', function() {
+  const subDataElements = [
+    ...document.getElementById('imt3z').querySelectorAll("[dataitem='true']")
+  ];
+  const searchTerm = this.value.toLowerCase();
+  subDataElements.forEach(element => {
+    const usernameElement = element.querySelector("[annotationname='productName']");
+    if (usernameElement && !usernameElement.textContent.includes('Title here')) {
+      const username = usernameElement.textContent.toLowerCase();
+      if (username.includes(searchTerm)) {
+        element.style.display = 'block'; // Show the element
+      } else {
+        element.style.display = 'none'; // Hide the element
+      }
+    }
+  });
+});
+
 window.onload = () => {
   const spinner = document.getElementById('spinner');
   const list = document.getElementById('irwbh');

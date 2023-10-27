@@ -189,6 +189,13 @@ window.onload = () => {
                 console.log(e);
             }
             try {
+                document.querySelector(
+                    "[annotationname = ordercomment]"
+                ).value = response.body.query.ordercomment;
+            } 
+            catch (e) {
+                console.log(e);}
+            try {
                 const subDataElements =[...document.getElementById("i60fb").querySelectorAll( "[dataitem='true']" )].filter(
                     (element, index, array) =>
                     !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)

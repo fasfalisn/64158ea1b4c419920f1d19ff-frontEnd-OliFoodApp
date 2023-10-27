@@ -221,6 +221,9 @@ h6 {
 .list-cell-right.classRule-ihtde {
     width: 100% !important;
 }
+.form-control.classRule-iqi4f{
+  border-radius:18px !important;
+}
 @media (max-width: 480px) {
     .d-flex.flex-sm-column.flex-row.flex-grow-1.align-items-center.align-items-sm-start.pt-2.text-white.classRule-iiqz {
         overflow-x: scroll !important;

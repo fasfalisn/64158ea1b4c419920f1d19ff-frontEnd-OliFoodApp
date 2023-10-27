@@ -66,6 +66,9 @@ document.getElementById('i64aj').onclick = (event) => {
   order["ordersupplier"] = supplierId;
   order["ordercustomer"] = customerId;
   order["orderstatus"] = "Αναμονή";
+  order["ordercomment"] = document.querySelector(
+        "[annotationname = 'ordercomment']"
+    ).value;
   order["orderproducts"] = result.orderproducts;
 
   apiOrderApi.createorder(order, (error,data,response) => {

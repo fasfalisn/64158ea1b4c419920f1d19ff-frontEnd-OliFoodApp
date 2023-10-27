@@ -1,5 +1,7 @@
 let apiProductApi = new TempApi.ProductApi();
 import TempApi from "../src/index";
+let apiUserApi = new TempApi.UserApi();
+
 document.getElementById("i02ok").onclick = (event) => {
     event.preventDefault();
     {
@@ -134,6 +136,28 @@ document.getElementById('iy0oer').onclick = (event) => {
       }
       else {
         console.log('API called successfully.');
+        let user = JSON.parse(localStorage.getItem('user'));
+        const userId = user._id;
+        const index = user.userproducts.indexOf(productId);
+        if (index > -1) { // only splice array when item is found
+            user.userproducts.splice(index, 1); // 2nd parameter means remove one item only
+        }
+        // localStorage.setItem('user', JSON.stringify(user));
+        let opts = {
+            user};
+        apiUserApi.updateuser( userId, opts, (error, data, response) => {
+            if (error) {
+            console.error(error);
+            }
+            else {
+        
+            console.log('API called successfully. Returned data: ' + data);
+            console.log(response.body.query);
+            localStorage.setItem('user', JSON.stringify(response.body.query));
+            
+            }
+        }
+                            );
         {
           location.href= '/MyProducts' ;
         }
