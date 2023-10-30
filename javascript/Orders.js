@@ -3,7 +3,7 @@ import TempApi from '../src/index';
 document.getElementById('i02ok').onclick = (event) => {
   event.preventDefault();
   {
-    location.href= '/Profile' ;
+    location.href= '/MyProfile' ;
   }
 };
 document.getElementById('i172z').onclick = (event) => {
