@@ -67,8 +67,7 @@ document.getElementById('i64aj').onclick = (event) => {
       // const productName = row.querySelector("h2[annotationname=productName]").textContent.trim();
       // const productPrice = row.querySelector("p[annotationname=productPrice]").textContent.trim();  
         const quantityInput = row.cells[1].getElementsByTagName("input")[0];
-        const quantity = parseInt(quantityInput.value, 10); // Convert input value to an integer
-        console.log(quantity);
+        const quantity = parseFloat(quantityInput.value.replace(',','.')); // Convert input value to a number
         // Check if the quantity is greater than 0, meaning the user selected this product
         if (quantity > 0) {
           const productIdElement = row.querySelector("[data-product-id]");

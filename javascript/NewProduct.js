@@ -158,13 +158,12 @@ document.getElementById("iy0oer").onclick = (event) => {
               console.log('API called successfully. Returned data: ' + data);
               console.log(response.body.query);
               localStorage.setItem('user', JSON.stringify(response.body.query));
+              location.href = "/MyProducts";
               
             }
           }
                                );
-            {
-                location.href = "/MyProducts";
-            }
+            
         }
     });
 };
