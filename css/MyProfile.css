@@ -47,11 +47,12 @@ h6 {
 
 #iti4j {
     overflow-x: auto !important;
+    background-color: rgba(250, 250, 250, 0.5);
 }
 
 .d-flex.flex-sm-column.flex-row.flex-grow-1.align-items-center.align-items-sm-start.pt-2.text-white.classRule-iiqz {
     background-color: #ffffff !important;
-    box-shadow: 7px 2px 9px 0 rgba(0, 0, 0, 0.49) !important;
+    /* box-shadow: 7px 2px 9px 0 rgba(0, 0, 0, 0.49) !important; */
     min-height:100vh !important;
 }
 
