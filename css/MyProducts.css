@@ -163,12 +163,20 @@
     flex-direction:column !important;
   }
   .list-item-image.classRule-itrm2{
-    min-height:100% !important;
-    max-width:150px !important;
+    height: 150px !important;
+    max-height: 150px !important;
+    width: 150px !important;
+    max-width: 150px !important;
+    object-fit: cover !important;
+    border-radius: 18px !important;
   }
   .list-item-image.classRule-i549k{
-    min-height:100% !important;
-    max-width:150px !important;
+    height: 150px !important;
+    max-height: 150px !important;
+    width: 150px !important;
+    max-width: 150px !important;
+    object-fit: cover !important;
+    border-radius: 18px !important;
   }
   .form-group.flex.wabli-box.classRule-i8tkm{
     justify-content:space-between !important;
