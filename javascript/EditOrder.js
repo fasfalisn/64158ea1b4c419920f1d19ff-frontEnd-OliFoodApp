@@ -115,6 +115,8 @@ window.onload = () => {
 
     if (user.usercategory === 'Προμηθευτής') {
         document.getElementById('i37m4').style.display = 'none';
+        document.getElementById('4ui3').style.display = 'none';
+        document.getElementById('4ui4').style.display = 'none';
       }
       else {
         document.getElementById('iy7v8').style.display = 'none';
@@ -193,6 +195,15 @@ window.onload = () => {
                 document.querySelector(
                     "[annotationname = ordercomment]"
                 ).value = response.body.query.ordercomment;
+            } 
+            catch (e) {
+                console.log(e);}
+            try {
+                if(response.body.query.ordernote){
+                    document.querySelector(
+                    "[annotationname = ordernote]"
+                    ).value = response.body.query.ordernote;
+                }
             } 
             catch (e) {
                 console.log(e);}

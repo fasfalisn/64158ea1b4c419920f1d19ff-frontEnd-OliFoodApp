@@ -76,6 +76,9 @@ class Order {
             if (data.hasOwnProperty('ordercomment')) {
                 obj['ordercomment'] = ApiClient.convertToType(data['ordercomment'], 'String');
             }
+            if (data.hasOwnProperty('ordernote')) {
+                obj['ordernote'] = ApiClient.convertToType(data['ordernote'], 'String');
+            }
         }
         return obj;
     }

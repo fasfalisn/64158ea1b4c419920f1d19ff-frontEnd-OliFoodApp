@@ -70,6 +70,9 @@ document.getElementById('i64aj').onclick = (event) => {
   order["ordercomment"] = document.querySelector(
         "[annotationname = 'ordercomment']"
     ).value;
+  order["ordernote"] = document.querySelector(
+    "[annotationname = 'ordernote']"
+  ).value;
   order["orderproducts"] = result.orderproducts;
 
   apiOrderApi.createorder(order, (error,data,response) => {
