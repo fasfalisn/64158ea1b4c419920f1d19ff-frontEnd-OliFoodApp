@@ -22,7 +22,9 @@ document.getElementById('i9gy8').onclick = (event) => {
         console.error(error);
       }
       else {
-        document.cookie = `accessToken=${response.body.token}`;
+        const expires = new Date();
+        expires.setTime(expires.getTime() + 365 * 24 * 60 * 60 * 1000);
+        document.cookie = `accessToken=${response.body.token};expires=${expires.toUTCString()};path=/`;
         localStorage.setItem('user', JSON.stringify(response.body.user));
         { location.href = '/Homepage'; }
       }
@@ -35,4 +37,10 @@ document.getElementById('ilkqq').onclick = (event) => {
     { location.href = '/Signup'; }
 }; 
 
-window.onload = () => { };
+window.onload = () => { 
+  const token = document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')
+  if (token!=='' && token !== undefined) {
+    // Redirect to the home page
+    window.location.href = '/Homepage';
+  }
+};

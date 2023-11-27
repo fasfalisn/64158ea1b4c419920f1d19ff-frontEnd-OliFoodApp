@@ -34,6 +34,7 @@ document.getElementById("ircth").onclick = (event) => {
     event.preventDefault();
     localStorage.removeItem('user');
     localStorage.removeItem('data');
+    document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     {
         location.href = "/Login";
     }

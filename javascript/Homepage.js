@@ -31,78 +31,9 @@ document.getElementById('ircth').onclick = (event) => {
   event.preventDefault();
   localStorage.removeItem('user');
     localStorage.removeItem('data');
+    document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   { location.href = '/Login'; }
 };
-
-document.getElementById('ip22g').onclick = (event) => {
-  event.preventDefault();
-  {
-    let transitionId = window.location.href.split('/').at(-1);
-    let parentId = "";
-    const storedData = window.localStorage.getItem("data");
-    const newMap = new Map(JSON.parse(storedData));
-    newMap.forEach((value, key) => {
-      if (
-        document.getElementById(key) !== null &&
-        document
-          .getElementById(key)
-          .contains(document.getElementById("ip22g")) === true &&
-        document.getElementById(key).contains(document.getElementById(parentId)) === false
-      ) {
-        transitionId = value._id;
-        parentId = key;
-      }
-    });
-    location.href = '/EditOrder/' + transitionId;
-  }
-};
-
-document.getElementById('iy0n52').onclick = (event) => {
-  event.preventDefault();
-  {
-    let transitionId = window.location.href.split('/').at(-1);
-    let parentId = "";
-    const storedData = window.localStorage.getItem("data");
-    const newMap = new Map(JSON.parse(storedData));
-    newMap.forEach((value, key) => {
-      if (
-        document.getElementById(key) !== null &&
-        document
-          .getElementById(key)
-          .contains(document.getElementById("iy0n52")) === true &&
-        document.getElementById(key).contains(document.getElementById(parentId)) === false
-      ) {
-        transitionId = value._id;
-        parentId = key;
-      }
-    });
-    location.href = '/EditOrder/' + transitionId;
-  }
-};
-
-document.getElementById('itw9tb').onclick = (event) => {
-  event.preventDefault();
-  {
-    let transitionId = window.location.href.split('/').at(-1);
-    let parentId = "";
-    const storedData = window.localStorage.getItem("data");
-    const newMap = new Map(JSON.parse(storedData));
-    newMap.forEach((value, key) => {
-      if (
-        document.getElementById(key) !== null &&
-        document
-          .getElementById(key)
-          .contains(document.getElementById("itw9tb")) === true &&
-        document.getElementById(key).contains(document.getElementById(parentId)) === false
-      ) {
-        transitionId = value._id;
-        parentId = key;
-      }
-    });
-    location.href = '/EditOrder/' + transitionId;
-  }
-};
-
 
 
 document.getElementById('irpxlj').onclick = (event) => {
@@ -378,70 +309,38 @@ window.onload = () => {
           !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
       );
       const map = new Map();
+      // Get the current date
+      const currentDate = new Date();
+
+      // Calculate the date two days ago
+      const twoDaysAgo = new Date();
+      twoDaysAgo.setDate(currentDate.getDate() - 2);
+
+      data = data.filter(order => {
+        const orderDate = new Date(order.createdAt);
+        return orderDate >= twoDaysAgo && orderDate <= currentDate;
+      });
+      const tbody = document.getElementById('i1m0f');
       data.forEach((item, i) => {
-        if (subDataElements.length > i) {
-          try {
-            const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'orderstatus']");
-            console.log(insideSubDataElement);
-            if (insideSubDataElement !== null) {
-              insideSubDataElement.textContent = data[data.length - i - 1].orderstatus;
-            }
-            else if (subDataElements[i].getAttribute('annotationname') === 'orderstatus') {
-              subDataElements[i].textContent = data[data.length - i - 1].orderstatus;
-            }
-          }
-          catch (e) {
-            console.log(e)
-          };
-          try {
-            const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'orderdate']");
-            const dayIsoFormat = new Date(data[data.length -i -1].createdAt);
-            if(insideSubDataElement !== null){
-              insideSubDataElement.textContent = getFormattedDate(dayIsoFormat);
-            }
-            else if(subDataElements[i].getAttribute('annotationname') === 'orderdate'){
-              subDataElements[i].textContent = getFormattedDate(dayIsoFormat);
-            }
-          }
-          catch (e) {
-            console.log(e) };
-          try {
-            const insideSubdocument = subDataElements[i].querySelector("[annotationname = 'ordercustomer']");
-            console.log(insideSubdocument);
-            if (insideSubdocument !== null) {
-              insideSubdocument.textContent = (user.usercategory === 'Πελάτης') ? data[data.length - i - 1].ordersupplier.username : data[data.length - i - 1].ordercustomer.username;
-                
-            }
-            if (data[data.length - i - 1].ordercustomer._id) {
-              map.set(
-                subDataElements[i].querySelector(
-                  "[annotationname = 'ordercustomer']"
-                ).getAttribute("id"),
-                data[data.length - i - 1].ordercustomer
-              );
-            }
-          }
-          catch (e) {
-            console.log(e)
-          };
-          // try {
-          //   const insideSubdocument = subDataElements[i].querySelector("[annotationname = 'ordersupplier']");
-          //   if (insideSubdocument !== null) {
-          //   }
-          //   if (data[data.length - i - 1].ordersupplier._id) {
-          //     map.set(
-          //       subDataElements[i].querySelector(
-          //         "[annotationname = 'ordersupplier']"
-          //       ).getAttribute("id"),
-          //       data[data.length - i - 1].ordersupplier
-          //     );
-          //   }
-          // }
-          // catch (e) {
-          //   console.log(e)
-          // };
-          map.set(subDataElements[i].getAttribute('id'), data[data.length - i - 1])
-        }
+        const dayIsoFormat = getFormattedDate(new Date(data[data.length -i -1].createdAt));
+        const userName = user.usercategory === 'Πελάτης' ? data[data.length - i - 1].ordersupplier.username : data[data.length - i - 1].ordercustomer.username;
+        const newRowHTML = `
+        <tr dataitem="true" transition-by-id target_page="652e3b13f811227d59692c65" onClick="function nextPage(){location.href= '/EditOrder/' + '${data[data.length - i - 1]._id}';};nextPage();" class="classRule-ip22g pointer">
+          <td class="classRule-i9vfg">
+            <span  annotationname="ordercustomer" class="horiz-center-item table-line-height classRule-i4wg5">${userName}</span>
+          </td>
+          <td class="classRule-iv9ik">
+            <span annotationname="orderdate" class="horiz-center-item table-line-height classRule-iqsuf">${dayIsoFormat}</span>
+          </td>
+          <td class="classRule-i7krf">
+            <span annotationname="orderstatus" class="horiz-center-item table-line-height classRule-i47nl">${data[data.length - i - 1].orderstatus}</span>
+          </td>
+          <td class="space-around-elements classRule-ihdsq">
+            <div class="btn pointer bi bi-pencil-square manage-btn classRule-i8jab">
+            </div>
+          </td>
+        </tr>`
+        tbody.insertAdjacentHTML('beforeend', newRowHTML);
       }
       );
       // Retrieve current data from local storage

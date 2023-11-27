@@ -60,7 +60,7 @@ export default class ProductApi {
       let queryParams = {
       };
       let headerParams = {
-        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')}`
       };
       let formParams = {
       };
@@ -102,7 +102,7 @@ export default class ProductApi {
       let queryParams = {
       };
       let headerParams = {
-        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')}`
       };
       let formParams = {
       };
@@ -139,7 +139,7 @@ export default class ProductApi {
       let queryParams = {
       };
       let headerParams = {
-        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')}`
       };
       let formParams = {
       };
@@ -182,7 +182,7 @@ export default class ProductApi {
         'filter': filter
       };
       let headerParams = {
-        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')}`
       };
       let formParams = {
       };
@@ -225,7 +225,7 @@ export default class ProductApi {
       let queryParams = {
       };
       let headerParams = {
-        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')}`
       };
       let formParams = {
       };
@@ -271,7 +271,7 @@ export default class ProductApi {
       let queryParams = {
       };
       let headerParams = {
-        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')}`
       };
       let formParams = {
       };
