@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import UserUserimage from './UserUserimage';
+import User from './User';
 
 /**
  * The Product model module.
