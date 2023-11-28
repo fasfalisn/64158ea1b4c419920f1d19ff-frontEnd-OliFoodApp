@@ -1,5 +1,8 @@
 let apiUserApi = new TempApi.UserApi();
 import TempApi from '../src/index';
+let apiProductApi = new TempApi.ProductApi();
+
+const table = document.getElementById("imt3z");
 document.getElementById('i02ok').onclick = (event) => {
   event.preventDefault();
   {
@@ -192,7 +195,51 @@ window.onload = () => {
           
             // Append the new row HTML to the table body
             tbody.insertAdjacentHTML('beforeend', newRowHTML);
+            const icons = table.querySelectorAll('i');
+        
+            const usersSavedIt = tableDatauserproducts[tableDatauserproducts.length - indexuserproducts -1]?.usersSavedIt;
+            if(usersSavedIt !== undefined && usersSavedIt.length > 0 && usersSavedIt.includes(userId)){
+              icons[icons.length - 1].style.color = '#d03333';
+              const row = icons[icons.length - 1].closest('tr');
+              tbody.insertBefore(row, tbody.firstChild);
+            }
 
+          });
+
+          const iconElements = table.querySelectorAll('i');
+          
+          iconElements.forEach(icon => {
+            icon.addEventListener('click', function handleIconClick(event) {
+              event.preventDefault();
+              const icon = event.currentTarget;
+              const productId = icon.nextElementSibling.getAttribute('data-product-id');
+              apiProductApi.getproduct(productId, (error, data, response) => {
+                if (error){
+                  console.log(error);
+                }else{
+                  const product = response.body.query;
+                  if(product.usersSavedIt.includes(userId)){
+                    product.usersSavedIt.pop(userId);
+                    icon.style.color = '#5f616e';
+                  }else{
+                    product.usersSavedIt.push(userId);
+                    icon.style.color = '#d03333';
+                    const row = icon.closest('tr');
+                    tbody.insertBefore(row, tbody.firstChild);
+                  }
+                  let opts = {product};
+                  apiProductApi.updateproduct(productId, opts, (error,data,response) => {
+                    if(error){
+                      console.log(error);
+                    }
+                    else{
+
+                    }
+                  })
+                }
+                
+              });
+            });
           });
         }
         if(response.body.query.userproducts._id){

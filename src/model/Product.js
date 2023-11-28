@@ -76,6 +76,9 @@ class Product {
             if (data.hasOwnProperty('productUnit')) {
                 obj['productUnit'] = ApiClient.convertToType(data['productUnit'], 'String');
             }
+            if (data.hasOwnProperty('usersSavedIt')) {
+                obj['usersSavedIt'] = ApiClient.convertToType(data['usersSavedIt'], [User]);
+            }
         }
         return obj;
     }
