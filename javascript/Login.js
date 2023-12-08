@@ -37,6 +37,17 @@ document.getElementById('ilkqq').onclick = (event) => {
     { location.href = '/Signup'; }
 }; 
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+  .then(function(registration) {
+    console.log('Service worker successfully registered.');
+  })
+  .catch(function(error) {
+    console.log('Service worker registration failed:', error);
+  });
+}
+
+
 window.onload = () => { 
   const token = document.cookie.split('accessToken=')[1].split(';')[0].replace(' ','')
   if (token!=='' && token !== undefined) {

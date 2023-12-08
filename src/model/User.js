@@ -35,9 +35,9 @@ class User {
      * @param useraddress {String} 
      * @param usertax {String} 
      */
-    constructor(useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax) { 
+    constructor(useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax, usersubscriptions) { 
         
-        User.initialize(this, useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax);
+        User.initialize(this, useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax, usersubscriptions);
     }
 
     /**
@@ -45,7 +45,7 @@ class User {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax) { 
+    static initialize(obj, useremail, password, username, usercategory, userimage, userproducts, userstatus, usertown, useraddress, usertax, usersubscriptions) { 
         obj['useremail'] = useremail;
         obj['password'] = password;
         obj['username'] = username;
@@ -56,6 +56,7 @@ class User {
         obj['usertown'] = usertown;
         obj['useraddress'] = useraddress;
         obj['usertax'] = usertax;
+        obj['usersubscriptions'] = usersubscriptions;
     }
 
     /**
@@ -101,6 +102,9 @@ class User {
             }
             if (data.hasOwnProperty('usertax')) {
                 obj['usertax'] = ApiClient.convertToType(data['usertax'], 'String');
+            }
+            if (data.hasOwnProperty('usersubscriptions')) {
+                obj['usersubscriptions'] = ApiClient.convertToType(data['usersubscriptions'], [Object]);
             }
         }
         return obj;
@@ -163,6 +167,8 @@ User.prototype['useraddress'] = undefined;
  * @member {String} usertax
  */
 User.prototype['usertax'] = undefined;
+
+User.prototype['usersubscriptions'] = undefined;
 
 
 

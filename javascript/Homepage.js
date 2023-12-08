@@ -264,6 +264,76 @@ const returnChunkIndexivcw6h = (chunk, numberOfPages, cause) => {
   }
 }
 
+const urlBase64ToUint8Array = base64String => {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+  }
+
+  return outputArray;
+}
+
+
+const saveSubscription = (subscription) => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  if(user.usersubscriptions === undefined){
+    user.usersubscriptions = [];
+  }
+
+  // Check if the subscription already exists
+  const existingSubscription = user.usersubscriptions.find(
+    (existingSub) => existingSub.endpoint === subscription.endpoint
+  );
+
+  if(!existingSubscription){
+    user.usersubscriptions.push(subscription);
+  }
+  
+  let opts = {
+    user};
+  apiUserApi.updateuser( user._id, opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    }
+    else {
+      console.log('API called successfully. Returned data: ' + data);
+      localStorage.setItem('user', JSON.stringify(response.body.query));
+      return response;
+    }
+  });
+  return null;
+}
+
+
+if ('Notification' in window && 'serviceWorker' in navigator) {
+  Notification.requestPermission().then(function(permission) {
+    if (permission === 'granted') {
+      console.log('Notification permission granted.');
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array("BJhKT7T_z0WIZOZ7tjgZjJZJBGG3NA3qc6c90H9U2qYX-g01wreP9eCvfCA7ULpj5OtfOJ6fK_wZfRkan9EMYbk")
+      })
+          .then(async function(subscription) {  
+            const response = saveSubscription(subscription);
+          })
+          .catch(function(error) {
+            console.error('Error subscribing to push notifications:', error);
+          });
+      });
+    } else {
+      console.log('Unable to get permission to notify.');
+    }
+  });
+}
+
 window.onload = () => {
   const spinner = document.getElementById('spinner');
   const list = document.getElementById('irwbh');
