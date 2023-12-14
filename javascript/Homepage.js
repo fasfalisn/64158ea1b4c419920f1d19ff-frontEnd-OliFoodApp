@@ -151,11 +151,14 @@ const onClickPaginationButtonivcw6h = (chunk, pagination) => {
   let numberOfFrontButtons =  findTypeOfPaginationivcw6h(pagination);
   const filter = { usercategory: { $eq: "Προμηθευτής" } };
   pagination.children[chunk+numberOfFrontButtons-1].classList.add("active");
-  apiUserApi.getByParamsuser( filter, (error, data, response) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  // apiUserApi.getByParamsuser( filter, (error, data, response) => {
+  apiUserApi.getuser(user._id, (error,data2,response) => {
     if (error) {
       console.error(error);
     }
     else {
+      let data = response.body.query.usersuppliers;
       console.log('API called successfully. Returned data: ' + data);
       const subDataElements =[...document.getElementById("ivcw6h").querySelectorAll( "[dataitem='true']" )].filter(
         (element, index, array) =>
@@ -440,8 +443,10 @@ window.onload = () => {
   const filtergetAllSuppliers = { usercategory: { $eq: "Προμηθευτής" } };
 
 
-  apiUserApi.getByParamsuser(filtergetAllSuppliers, (error, data, response) => {
+  // apiUserApi.getByParamsuser(filtergetAllSuppliers, (error, data, response) => {
+  apiUserApi.getuser(user._id, (error,data2,response) => {
     if (error) { console.error(error); } else {
+      let data = response.body.query.usersuppliers;
       console.log('API called successfully. Returned data: ' + data);
 
       const subDataElements = [...document.getElementById("ivcw6h").querySelectorAll("[dataitem='true']")].filter(

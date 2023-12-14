@@ -106,6 +106,9 @@ class User {
             if (data.hasOwnProperty('usersubscriptions')) {
                 obj['usersubscriptions'] = ApiClient.convertToType(data['usersubscriptions'], [Object]);
             }
+            if (data.hasOwnProperty('usersuppliers')) {
+                obj['usersuppliers'] = ApiClient.convertToType(data['usersuppliers'], [User]);
+            }
         }
         return obj;
     }

@@ -4,6 +4,8 @@ module.exports = {
   entry: {
 	'Login' : './javascript/Login.js',
 	'Signup' : './javascript/Signup.js',
+	'Customers' : './javascript/Customers.js',
+	'ConnectCustomers' : './javascript/ConnectCustomers.js',
 	'Homepage' : './javascript/Homepage.js',
 	'Suppliers' : './javascript/Suppliers.js',
 	'Orders' : './javascript/Orders.js',
