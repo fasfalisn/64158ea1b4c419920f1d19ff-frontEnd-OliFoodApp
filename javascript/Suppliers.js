@@ -310,7 +310,7 @@ window.onload = () => {
         let data = response.body.query.usersuppliers;
         console.log('API called successfully. Returned data: ' + data);
         spinner.style.display = 'none';
-        list.style.display = 'block';
+        list.style.display = 'flex';
         const subDataElements =[...document.getElementById("ivcw6h").querySelectorAll( "[dataitem='true']" )].filter(
           (element, index, array) =>
           !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
