@@ -285,32 +285,42 @@ const urlBase64ToUint8Array = base64String => {
 
 
 const saveSubscription = (subscription) => {
-  let user = JSON.parse(localStorage.getItem('user'));
-  if(user.usersubscriptions === undefined){
-    user.usersubscriptions = [];
-  }
-
-  // Check if the subscription already exists
-  const existingSubscription = user.usersubscriptions.find(
-    (existingSub) => existingSub.endpoint === subscription.endpoint
-  );
-
-  if(!existingSubscription){
-    user.usersubscriptions.push(subscription);
-  }
-  
-  let opts = {
-    user};
-  apiUserApi.updateuser( user._id, opts, (error, data, response) => {
-    if (error) {
-      console.error(error);
+  let oldUser = JSON.parse(localStorage.getItem('user'));
+  apiUserApi.getuser( oldUser._id , (error,data, response) => {
+    if(error){
+      console.log(error);
     }
     else {
-      console.log('API called successfully. Returned data: ' + data);
-      localStorage.setItem('user', JSON.stringify(response.body.query));
-      return response;
+      let user = response.body.query;
+      if(user.usersubscriptions === undefined){
+        user.usersubscriptions = [];
+      }
+    
+      // Check if the subscription already exists
+      const existingSubscription = user.usersubscriptions.find(
+        (existingSub) => existingSub.endpoint === subscription.endpoint
+      );
+    
+      if(!existingSubscription){
+        user.usersubscriptions.push(subscription);
+      }
+      
+      let opts = {
+        user};
+      apiUserApi.updateuser( user._id, opts, (error, data, response) => {
+        if (error) {
+          console.error(error);
+        }
+        else {
+          console.log('API called successfully. Returned data: ' + data);
+          localStorage.setItem('user', JSON.stringify(response.body.query));
+          return response;
+        }
+      });
+
     }
-  });
+  })
+  
   return null;
 }
 
