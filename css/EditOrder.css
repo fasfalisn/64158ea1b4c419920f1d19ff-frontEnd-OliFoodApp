@@ -233,6 +233,11 @@ h6 {
 .form-control.classRule-iqi4f{
   border-radius:18px !important;
 }
+#printButton {
+    background-color: #f1b604;
+    border-radius: 15px;
+    border: none;
+}
 @media (max-width: 480px) {
     .d-flex.flex-sm-column.flex-row.flex-grow-1.align-items-center.align-items-sm-start.pt-2.text-white.classRule-iiqz {
         overflow-x: scroll !important;
@@ -255,5 +260,16 @@ h6 {
     }
     .form-group.flex.wabli-box.classRule-iycdpy {
         flex-direction: column !important;
+    }
+}
+@media print {
+    /* Show the element with the ID 'elementToPrint' when printing */
+    #irwbh {
+      display: block !important;
+    }
+
+    /* Hide other elements when printing */
+    #iiqih, #ipzt, #printButton {
+      display: none !important;
     }
 }

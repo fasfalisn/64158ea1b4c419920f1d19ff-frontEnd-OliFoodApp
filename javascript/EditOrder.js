@@ -1,5 +1,9 @@
 let apiOrderApi = new TempApi.OrderApi();
 import TempApi from "../src/index";
+
+document.getElementById('printButton').addEventListener('click', function() {
+    window.print();
+});
 document.getElementById("i02ok").onclick = (event) => {
     event.preventDefault();
     {
