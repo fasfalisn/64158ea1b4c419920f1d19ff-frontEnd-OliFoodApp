@@ -109,6 +109,9 @@ class User {
             if (data.hasOwnProperty('usersuppliers')) {
                 obj['usersuppliers'] = ApiClient.convertToType(data['usersuppliers'], [User]);
             }
+            if (data.hasOwnProperty('userphone')) {
+                obj['userphone'] = ApiClient.convertToType(data['userphone'], 'String');
+            }
         }
         return obj;
     }
@@ -173,7 +176,7 @@ User.prototype['usertax'] = undefined;
 
 User.prototype['usersubscriptions'] = undefined;
 
-
+User.prototype['userphone'] = undefined;
 
 
 

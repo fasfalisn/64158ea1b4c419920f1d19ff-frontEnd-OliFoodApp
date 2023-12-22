@@ -105,6 +105,13 @@ window.onload = () => {
             }
             try {
                 document.querySelector(
+                    "[annotationname = userphone]"
+                ).textContent = response.body.query.userphone;
+            } catch (e) {
+                console.log(e);
+            }
+            try {
+                document.querySelector(
                     "[annotationname = usercategory]"
                 ).textContent = response.body.query.usercategory;
             } catch (e) {

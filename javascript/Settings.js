@@ -116,6 +116,9 @@ document.getElementById("i9gy8").onclick = (event) => {
     user["useremail"] = document.querySelector(
         "[annotationname = 'useremail']"
     ).value;
+    user["userphone"] = document.querySelector(
+        "[annotationname = 'userphone']"
+    ).value;
     user["username"] = document.querySelector(
         "[annotationname = 'username']"
     ).value;
@@ -155,6 +158,8 @@ document.getElementById("i9gy8").onclick = (event) => {
             console.log("API called successfully. Returned data: " + data);
             document.querySelector("[annotationname = useremail]").value =
                 response.body.query.useremail;
+            document.querySelector("[annotationname = userphone]").value =
+                response.body.query.userphone;
             document.querySelector("[annotationname = username]").value =
                 response.body.query.username;
             document.querySelector("[annotationname = usercategory]").value =
@@ -234,6 +239,12 @@ window.onload = () => {
             try {
                 document.querySelector("[annotationname = useremail]").value =
                     response.body.query.useremail;
+            } catch (e) {
+                console.log(e);
+            }
+            try {
+                document.querySelector("[annotationname = userphone]").value =
+                    response.body.query.userphone;
             } catch (e) {
                 console.log(e);
             }
